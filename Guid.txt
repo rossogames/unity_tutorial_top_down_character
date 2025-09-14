@@ -1,0 +1,17 @@
+- Import assets
+- Crear character (game object)
+- Agrgar sprite renderer
+- Corregir compresion de sprites
+
+- Crear character controller
+- Mover character (sin animacion)
+	Mostrar input settings
+	_playerInput.Player.Move.performed
+	_playerInput.Player.Move.canceled
+
+- Crear animator controller
+- Crear clips 
+	- ajustar pivots
+- configurar blend tree
+- setear movementPosition en animetor por codigo
+- corregir reset de move direction

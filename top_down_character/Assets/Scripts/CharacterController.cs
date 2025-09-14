@@ -6,20 +6,8 @@ public class CharacterController : MonoBehaviour
     private Animator _animator;
     private InputSystem_Actions _playerInput;
 
-    private Vector2 _movementInput;
     private Vector2 _moveDirection;
     private float _speed = 5f;
-
-    public Vector2 MoveDirection 
-    {
-        get => _moveDirection;
-        set
-        {
-            _moveDirection = value;
-            _animator.SetFloat("moveDirectionX", _moveDirection.x);
-            _animator.SetFloat("moveDirectionY", _moveDirection.y);
-        }
-    }
 
     private void Awake()
     {
@@ -44,12 +32,18 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveDirection = new Vector3(_movementInput.x, _movementInput.y, 0);
-        transform.Translate(_speed * Time.deltaTime * MoveDirection);
+        transform.Translate(_speed * Time.deltaTime * _moveDirection);
     }
 
     private void OnPlayerMove(InputAction.CallbackContext context)
-    { 
-        _movementInput = context.ReadValue<Vector2>();
+    {
+        var inputValue = context.ReadValue<Vector2>();
+        _moveDirection = new Vector2(inputValue.x, inputValue.y);
+
+        if (_moveDirection != Vector2.zero)
+        {
+            _animator.SetFloat("moveDirectionX", _moveDirection.x);
+            _animator.SetFloat("moveDirectionY", _moveDirection.y);
+        }
     }
 }
