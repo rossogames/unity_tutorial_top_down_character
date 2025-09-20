@@ -18,9 +18,6 @@ Adventurer 2D Top-Down por Mattz Art
 ⚙️ Requirements
 Unity 6000.2.0f1
 
-Open the project in Unity.
-Run the SampleScene.
-
 📜 License
 
 This project is free to use for learning and prototyping.
