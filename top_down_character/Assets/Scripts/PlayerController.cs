@@ -6,12 +6,9 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private GameInputs _inputs;
 
+    private float _maxSpeed = 5f;
     private Vector2 _moveDirection;
-    private float _maxSpeed = 5;
-    private float _acceleration = 5;
-    private float _deceleration = 8;
-
-    private float _currentSpeed;
+    public float _currentSpeed;
 
     private Vector2 MoveDirection
     {
@@ -28,13 +25,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public float CurrentSpeed 
-    { 
+    {
         get => _currentSpeed;
         set
         {
             _currentSpeed = value;
             _animator.SetFloat("Speed", _currentSpeed);
-        }
+        } 
     }
 
     private void Awake()
@@ -59,14 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (MoveDirection != Vector2.zero)
-        {
-            CurrentSpeed = Mathf.MoveTowards(_currentSpeed, _maxSpeed, _acceleration * Time.deltaTime);
-        }
-        else
-        {
-            CurrentSpeed = Mathf.MoveTowards(_currentSpeed, 0, _deceleration * Time.deltaTime);
-        }
+        CurrentSpeed = MoveDirection.magnitude > 0 ? _maxSpeed : 0;
 
         Vector3 move = Time.deltaTime * CurrentSpeed * new Vector2(MoveDirection.x, MoveDirection.y);
         transform.Translate(move, Space.World);
