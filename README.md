@@ -1,4 +1,4 @@
-# 🎬 Unity Tutorial: 2D Player Controller (Pixel Art, 4 Directions)
+# 🎬 Unity Tutorial:  Top-view 2D Player Controller
 
 🎮 Top-view 2D Player Controller (Pixel Art, 4 Directions)
 This project accompanies the YouTube tutorial that explains step by step how to create a Player Controller in Unity with Idle and Run animations in 4 directions (up, down, left, right).
